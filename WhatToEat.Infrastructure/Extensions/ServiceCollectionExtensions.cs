@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WhatToEat.Domain.Repositories;
 using WhatToEat.Infrastructure.Persistence;
+using WhatToEat.Infrastructure.Repositories;
 using WhatToEat.Infrastructure.Seeders;
 
 namespace WhatToEat.Infrastructure.Extensions;
@@ -14,5 +16,6 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<WhatToEatDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IWhatToEatSeeder, WhatToEatSeeder>();
+        services.AddScoped<IWhatToEatRepository, WhatToEatRepository>();
     }
 }

@@ -1,0 +1,5 @@
+﻿@WhatToEat.API_HostAddress = https://localhost:7263
+
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat
+
+###
