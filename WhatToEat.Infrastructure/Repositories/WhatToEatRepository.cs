@@ -12,4 +12,12 @@ internal class WhatToEatRepository(WhatToEatDbContext dbContext) : IWhatToEatRep
         var questions = await dbContext.Questions.ToListAsync();
         return questions;
     }
+
+    public async Task<Question?> GetQuestionByIdAsync(int id)
+    {
+        var question = await dbContext.Questions
+            .Include(y => y.Answers)
+            .FirstOrDefaultAsync(x => x.Id == id);
+        return question;
+    }
 }

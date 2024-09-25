@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WhatToEat.Application.WhatToEat;
+using WhatToEat.Application.Questions;
 
 namespace WhatToEat.Application.Extensions;
 
@@ -7,6 +7,6 @@ public static class ServiceCollectionExtensions
 {
     public static void AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<IWhatToEatServices, WhatToEatServices>();
+        services.AddScoped<IQuestionsService, QuestionsService>();
     }
 }
