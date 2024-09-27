@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using WhatToEat.Application.Questions;
+using WhatToEat.Application.Questions.Dtos;
 
 namespace WhatToEat.API.Controllers;
 
@@ -8,20 +10,27 @@ namespace WhatToEat.API.Controllers;
 public class WhatToEatController(IQuestionsService whatToEatServices) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAllQuestionsAsync()
+    public async Task<IActionResult> GetAllQuestions()
     {
-        var questions = await whatToEatServices.GetAllQuestionsAsync();
+        var questions = await whatToEatServices.GetAllQuestions();
         return Ok(questions);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetQuestionsByIdAsync([FromRoute] int id)
+    public async Task<IActionResult> GetQuestionByIdOtro([FromRoute] int id)
     {
-        var question = await whatToEatServices.GetQuestionByIdAsync(id);
+        var question = await whatToEatServices.GetQuestionById(id);
         if (question is null)
         {
             return NotFound();
         }
         return Ok(question);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateQuestion([FromBody] CreateQuestionDto createQuestionDto)
+    {
+        int id = await whatToEatServices.Create(createQuestionDto);
+        return CreatedAtAction(actionName: nameof(this.GetQuestionByIdOtro), routeValues: new { id }, value: null);
     }
 }

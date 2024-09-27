@@ -7,6 +7,13 @@ namespace WhatToEat.Infrastructure.Repositories;
 
 internal class WhatToEatRepository(WhatToEatDbContext dbContext) : IWhatToEatRepository
 {
+    public async Task<int> Create(Question entity)
+    {
+        dbContext.Questions.Add(entity);
+        await dbContext.SaveChangesAsync();
+        return entity.Id;
+    }
+
     public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
     {
         var questions = await dbContext.Questions.ToListAsync();

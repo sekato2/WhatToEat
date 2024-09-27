@@ -4,7 +4,8 @@ namespace WhatToEat.Application.Questions
 {
     public interface IQuestionsService
     {
-        Task<IEnumerable<QuestionDto>> GetAllQuestionsAsync();
-        Task<QuestionDto?> GetQuestionByIdAsync(int id);
+        Task<IEnumerable<QuestionDto>> GetAllQuestions();
+        Task<QuestionDto?> GetQuestionById(int id);
+        Task<int> Create(CreateQuestionDto questionDto);
     }
 }

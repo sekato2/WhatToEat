@@ -5,6 +5,16 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 ###
 
 
-GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1018
+
+###
+
+
+POST {{WhatToEat.API_HostAddress}}/api/whatToEat
+Content-Type: application/json
+
+{
+  "Text": "para comer con las manos o con utensilios?"
+}
 
 ###
