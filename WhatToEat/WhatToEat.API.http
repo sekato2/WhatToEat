@@ -14,7 +14,7 @@ POST {{WhatToEat.API_HostAddress}}/api/whatToEat
 Content-Type: application/json
 
 {
-  "Text": "para comer con las manos o con utensilios?"
+  "Text": "Estupido"
 }
 
 ###
