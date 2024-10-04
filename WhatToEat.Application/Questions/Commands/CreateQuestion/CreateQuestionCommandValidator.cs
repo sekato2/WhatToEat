@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using WhatToEat.Application.Questions.Dtos;
 
-namespace WhatToEat.Application.Questions.Validators;
+namespace WhatToEat.Application.Questions.Commands.CreateQuestion;
 
-public class CreateQuestionDtoValidator : AbstractValidator<CreateQuestionDto>
+public class CreateQuestionCommandValidator : AbstractValidator<CreateQuestionCommand>
 {
-    public CreateQuestionDtoValidator()
+    public CreateQuestionCommandValidator()
     {
         RuleFor(dto => dto.Text)
             .Must(y => !new ProfanityFilter.ProfanityFilter().ContainsProfanity(y))
