@@ -2,7 +2,7 @@
 
 namespace WhatToEat.Application.Questions.Commands.UpdateQuestion;
 
-public class UpdateQuestionCommand() : IRequest<bool>
+public class UpdateQuestionCommand() : IRequest
 {
     public int Id { get; set;  }
 

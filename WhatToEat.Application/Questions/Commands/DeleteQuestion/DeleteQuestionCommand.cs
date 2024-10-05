@@ -2,7 +2,7 @@
 
 namespace WhatToEat.Application.Questions.Commands.DeleteQuestion;
 
-public class DeleteQuestionCommand(int id) : IRequest<bool>
+public class DeleteQuestionCommand(int id) : IRequest
 {
     public int Id { get; } = id;
 }

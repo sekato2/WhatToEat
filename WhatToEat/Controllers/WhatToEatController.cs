@@ -26,10 +26,7 @@ public class WhatToEatController(IMediator mediator) : ControllerBase
     public async Task<ActionResult<QuestionDto>> GetQuestionById([FromRoute] int id)
     {
         var question = await mediator.Send(new GetQuestionByIdQuery(id));
-        if (question is null)
-        {
-            return NotFound();
-        }
+        
         return Ok(question);
     }
 
@@ -46,11 +43,8 @@ public class WhatToEatController(IMediator mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteQuestion([FromRoute] int id)
     {
-        bool isDeleted = await mediator.Send(new DeleteQuestionCommand(id));
-        if (isDeleted)
-            return NoContent();
-
-        return NotFound();
+        await mediator.Send(new DeleteQuestionCommand(id));
+        return NoContent();
     }
 
 
@@ -60,10 +54,7 @@ public class WhatToEatController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> UpdateQuestion([FromRoute] int id, [FromBody] UpdateQuestionCommand command)
     {
         command.Id = id;
-        bool isUpdated = await mediator.Send(command);
-        if (isUpdated)
-            return NoContent();
-
-        return NotFound();
+        await mediator.Send(command);
+        return NoContent();
     }
 }

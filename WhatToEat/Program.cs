@@ -1,6 +1,7 @@
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
+using WhatToEat.API.Middlewares;
 using WhatToEat.Application.Extensions;
 using WhatToEat.Infrastructure.Extensions;
 using WhatToEat.Infrastructure.Seeders;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ErrorHandingMiddleware>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -25,6 +28,8 @@ var seeder = scope.ServiceProvider.GetRequiredService<IWhatToEatSeeder>();
 await seeder.Seed();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ErrorHandingMiddleware>();
+
 app.UseSerilogRequestLogging();
 
 if (app.Environment.IsDevelopment())
