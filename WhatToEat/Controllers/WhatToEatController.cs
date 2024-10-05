@@ -16,14 +16,14 @@ namespace WhatToEat.API.Controllers;
 public class WhatToEatController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAllQuestions()
+    public async Task<ActionResult<IEnumerable<QuestionDto>>> GetAllQuestions()
     {
         var questions = await mediator.Send(new GetAllQuestionsQuery());
         return Ok(questions);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetQuestionById([FromRoute] int id)
+    public async Task<ActionResult<QuestionDto>> GetQuestionById([FromRoute] int id)
     {
         var question = await mediator.Send(new GetQuestionByIdQuery(id));
         if (question is null)
@@ -42,6 +42,8 @@ public class WhatToEatController(IMediator mediator) : ControllerBase
 
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteQuestion([FromRoute] int id)
     {
         bool isDeleted = await mediator.Send(new DeleteQuestionCommand(id));
@@ -53,6 +55,8 @@ public class WhatToEatController(IMediator mediator) : ControllerBase
 
 
     [HttpPatch("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateQuestion([FromRoute] int id, [FromBody] UpdateQuestionCommand command)
     {
         command.Id = id;
