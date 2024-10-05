@@ -5,7 +5,7 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 ###
 
 
-GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1018
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1017
 
 ###
 
@@ -15,6 +15,20 @@ Content-Type: application/json
 
 {
   "Text": "Te gustaria una comida caliente"
+}
+
+###
+
+
+DELETE {{WhatToEat.API_HostAddress}}/api/whatToEat/1018
+
+###
+
+PATCH {{WhatToEat.API_HostAddress}}/api/whatToEat/1017
+Content-Type: application/json
+
+{
+  "Text": "Pregunta actualizada"
 }
 
 ###

@@ -14,6 +14,12 @@ internal class WhatToEatRepository(WhatToEatDbContext dbContext) : IWhatToEatRep
         return entity.Id;
     }
 
+    public async Task Delete(Question question)
+    {
+        dbContext.Remove(question);
+        await dbContext.SaveChangesAsync();
+    }
+
     public async Task<IEnumerable<Question>> GetAllQuestionsAsync()
     {
         var questions = await dbContext.Questions.ToListAsync();
@@ -27,4 +33,6 @@ internal class WhatToEatRepository(WhatToEatDbContext dbContext) : IWhatToEatRep
             .FirstOrDefaultAsync(x => x.Id == id);
         return question;
     }
+
+    public Task SaveChanges() => dbContext.SaveChangesAsync();
 }

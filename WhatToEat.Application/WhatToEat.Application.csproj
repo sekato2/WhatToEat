@@ -18,8 +18,4 @@
     <ProjectReference Include="..\WhatToEatDomain\WhatToEat.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Questions\Validators\" />
-  </ItemGroup>
-
 </Project>
