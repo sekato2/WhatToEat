@@ -9,7 +9,7 @@ public class DeleteQuestionCommandHandler(ILogger<DeleteQuestionCommandHandler> 
 {
     public async Task<bool> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Deleting question with id : {request.Id}");
+        logger.LogInformation("Deleting question with id: {QuestionId}", request.Id);
         var question = await whatToEatRepository.GetQuestionByIdAsync(request.Id);
         if (question is null)
             return false;

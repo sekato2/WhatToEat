@@ -1,3 +1,6 @@
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
 using WhatToEat.Application.Extensions;
 using WhatToEat.Infrastructure.Extensions;
 using WhatToEat.Infrastructure.Seeders;
@@ -10,6 +13,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration)
+);
 
 var app = builder.Build();
 

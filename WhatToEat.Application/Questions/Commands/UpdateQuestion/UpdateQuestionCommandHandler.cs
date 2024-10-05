@@ -12,7 +12,7 @@ public class UpdateQuestionCommandHandler(ILogger<UpdateQuestionCommandHandler> 
 {
     public async Task<bool> Handle(UpdateQuestionCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Updating question with id: {request.Id}");
+        logger.LogInformation("Updating question with id: {QuestionId} with {@UpdatedQuestion}", request.Id, request);
         var question = await whatToEatRepository.GetQuestionByIdAsync(request.Id);
         if (question is null)
             return false;

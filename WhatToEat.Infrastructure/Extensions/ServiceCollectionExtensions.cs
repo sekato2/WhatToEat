@@ -13,7 +13,9 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("WhatToEatDb");
-        services.AddDbContext<WhatToEatDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<WhatToEatDbContext>(options => 
+            options.UseSqlServer(connectionString)
+                .EnableSensitiveDataLogging());
 
         services.AddScoped<IWhatToEatSeeder, WhatToEatSeeder>();
         services.AddScoped<IWhatToEatRepository, WhatToEatRepository>();

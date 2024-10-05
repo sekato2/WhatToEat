@@ -13,7 +13,7 @@ public class CreateQuestionCommandHandler(ILogger<CreateQuestionCommandHandler> 
 {
     public async Task<int> Handle(CreateQuestionCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Creating a new question");
+        logger.LogInformation("Creating a new question {@Question}", request);
         var question = mapper.Map<Question>(request);
         int id = await whatToEatRepository.Create(question);
         return id;

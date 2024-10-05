@@ -12,7 +12,7 @@ public class GetQuestionByIdQueryHandler(ILogger<GetQuestionByIdQueryHandler> lo
 {
     public async Task<QuestionDto?> Handle(GetQuestionByIdQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Getting question by id " + request.Id);
+        logger.LogInformation("Getting question by id: {QuestionId}", request.Id);
         var question = await whatToEatRepository.GetQuestionByIdAsync(request.Id);
         var questionDtos = mapper.Map<QuestionDto?>(question);
         return questionDtos;
