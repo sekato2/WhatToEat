@@ -12,7 +12,7 @@ public class GetAllQuestionsQueryHandler(ILogger<GetAllQuestionsQueryHandler> lo
 {
     public async Task<IEnumerable<QuestionDto>> Handle(GetAllQuestionsQuery request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Getting all questions");
+        logger.LogInformation("Getting all answers");
         var questions = await whatToEatRepository.GetAllQuestionsAsync();
         var questionsDtos = mapper.Map<IEnumerable<QuestionDto>>(questions);
         return questionsDtos!;

@@ -5,7 +5,7 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 ###
 
 
-GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1018
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1019
 
 ###
 
@@ -30,5 +30,24 @@ Content-Type: application/json
 {
   "Text": "Pregunta actualizada"
 }
+
+###
+
+POST {{WhatToEat.API_HostAddress}}/api/whatToEat/1015/Answer
+Content-Type: application/json
+
+{
+  "Text": "coco with shrimp"
+}
+
+###
+
+
+
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1/Answer
+
+###
+
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1/Answer/1
 
 ###
