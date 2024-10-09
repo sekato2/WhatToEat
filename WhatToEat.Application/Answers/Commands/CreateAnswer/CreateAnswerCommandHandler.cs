@@ -10,15 +10,15 @@ namespace WhatToEat.Application.Answers.Commands.CreateAnswer;
 public class CreateAnswerCommandHandler(ILogger<CreateAnswerCommandHandler> logger,
     IMapper mapper,
     IWhatToEatRepository whatToEatRepository,
-    IAnswerRepository answerRepository) : IRequestHandler<CreateAnswerCommand>
+    IAnswerRepository answerRepository) : IRequestHandler<CreateAnswerCommand,int>
 {
-    public async Task Handle(CreateAnswerCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateAnswerCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating a new answer {@Answer}", request);
         var question = await whatToEatRepository.GetQuestionByIdAsync(request.QuestionId);
         if(question is null)
             throw new NotFoundException(nameof(Question), request.QuestionId.ToString());
         var answer = mapper.Map<Answer>(request);
-        await answerRepository.Create(answer);
+        return await answerRepository.Create(answer);
     }
 }

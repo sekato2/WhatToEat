@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
 using WhatToEat.Application.Answers.Commands.CreateAnswer;
+using WhatToEat.Application.Answers.Commands.DeleteAnswers;
 using WhatToEat.Application.Answers.Dtos;
 using WhatToEat.Application.Answers.Queries.GetAllForQuestion;
 using WhatToEat.Application.Answers.Queries.GetByIdForQuestion;
@@ -15,12 +16,19 @@ namespace WhatToEat.API.Controllers;
 [Route("api/whatToEat/{questionId}/Answer")]
 public class AnswersController(IMediator mediator) : ControllerBase
 {
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAnswers([FromRoute] int questionId)
+    {
+        await mediator.Send(new DeleteAnswersCommand(questionId));
+        return NoContent();
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAnswer([FromRoute] int questionId, [FromBody] CreateAnswerCommand command)
     {
         command.QuestionId = questionId;
-        await mediator.Send(command);
-        return Created();
+        int answerId = await mediator.Send(command);
+        return CreatedAtAction(nameof(GetByIdForQuestion), new { questionId, answerId }, null);
     }
 
     [HttpGet]

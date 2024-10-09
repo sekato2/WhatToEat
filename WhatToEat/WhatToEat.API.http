@@ -5,7 +5,7 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 ###
 
 
-GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1019
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1015
 
 ###
 
@@ -33,6 +33,9 @@ Content-Type: application/json
 
 ###
 
+
+
+
 POST {{WhatToEat.API_HostAddress}}/api/whatToEat/1015/Answer
 Content-Type: application/json
 
@@ -42,12 +45,14 @@ Content-Type: application/json
 
 ###
 
-
-
-GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1/Answer
+GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1019/Answer
 
 ###
 
 GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1/Answer/1
+
+###
+
+DELETE {{WhatToEat.API_HostAddress}}/api/whatToEat/1019/Answer
 
 ###
