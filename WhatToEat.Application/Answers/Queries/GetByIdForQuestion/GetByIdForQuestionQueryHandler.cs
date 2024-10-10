@@ -10,7 +10,6 @@ namespace WhatToEat.Application.Answers.Queries.GetByIdForQuestion;
 
 public class GetByIdForQuestionQueryHandler(ILogger<GetByIdForQuestionQueryHandler> logger,
     IWhatToEatRepository whatToEatRepository,
-    IAnswerRepository answerRepository,
     IMapper mapper) : IRequestHandler<GetByIdForQuestionQuery, AnswerDto>
 {
     public async Task<AnswerDto> Handle(GetByIdForQuestionQuery request, CancellationToken cancellationToken)

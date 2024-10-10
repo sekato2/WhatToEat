@@ -56,3 +56,21 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1/Answer/1
 DELETE {{WhatToEat.API_HostAddress}}/api/whatToEat/1019/Answer
 
 ###
+
+POST {{WhatToEat.API_HostAddress}}/Register
+Content-Type: application/json
+
+{
+  "email": "miCorreo@hotmail.com",
+  "password": "MiContrasenia1$"
+}
+
+###
+
+POST {{WhatToEat.API_HostAddress}}/Login
+Content-Type: application/json
+
+{
+  "email": "miCorreo@hotmail.com",
+  "password": "MiContrasenioa1$"
+}

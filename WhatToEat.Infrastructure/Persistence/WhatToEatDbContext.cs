@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using WhatToEat.Domain.Entities;
 using WhatToEat.Domains.Entities;
 
 namespace WhatToEat.Infrastructure.Persistence;
 
-internal class WhatToEatDbContext(DbContextOptions<WhatToEatDbContext> options) : DbContext(options)
+internal class WhatToEatDbContext(DbContextOptions<WhatToEatDbContext> options) 
+    : IdentityDbContext<User>(options)
 {
     internal DbSet<Question> Questions { get; set; }
     internal DbSet<Answer> Answers { get; set; }

@@ -8,8 +8,7 @@ using WhatToEat.Domains.Entities;
 namespace WhatToEat.Application.Answers.Commands.DeleteAnswers;
 
 public class DeleteAnswersCommandHandler (ILogger<DeleteAnswersCommandHandler> logger,
-    IWhatToEatRepository whatToEatRepository,
-    IMapper mapper) : IRequestHandler<DeleteAnswersCommand>
+    IWhatToEatRepository whatToEatRepository) : IRequestHandler<DeleteAnswersCommand>
 {
     public async Task Handle(DeleteAnswersCommand request, CancellationToken cancellationToken)
     {
