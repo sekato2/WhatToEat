@@ -1,4 +1,5 @@
 ﻿@WhatToEat.API_HostAddress = https://localhost:7263
+@token = CfDJ8O867qcmep9LudrhFi2DADqVzjTm2NBXyR06P2EXpvkiqodOOUvTPmWRvVwCx6c8NxKhEH8GS0pG9wN9jczZewhnp56xEM0GREd3PHbW2NofIjJvySphhS7Bxxklb52jk_jmx3RKrrw5KuSMv03MRxI4RaU1V2FyDw9SyRW18gxc9SkCTmnWyiUNcQpGBGZbHrB1UouEl-iAciO4K3NJOK5GvQCKjN-pB2v4BELiOaki1QTgccA_BPCO4E-0k0cFQvU7IqDRo2NZnP0z1LUbNwGUyS3ES5D9ePp--ez__wY0uBiODhx6NlLdQO55J8NKPYjWsvDoMnuiwU1OShUJorfYGxYxsNyik-vyRj_G_hr4_1J7msS6x5L8R2q6PfCqsWR1keKV4CRQjygzxzXGi_PzJCd5SCE0iKyp6qTqK3bPt_ubaUD-6eTonrdbjG9gEYGKUSeKLYeFFG2QsiUikTjaSTYm9cupfmoIa73IALPppE6GcVqO2j6AJ63BgueHD0po7v8lcR7v_8or8K5s0HesZ4s5FO2BoQAjhQYhTKvkEV2NMPn646zAbk1GIuOXaq3Ax2Kn5SomrNau1tI86723A_7GBV-f6K0ObLPpyrkb0CkWpZS48eAKyJHyCPqGUNvloDunicdmQIUi_9XRnAwmiCV1YiPZ4yQ6jctQ2A3LvalMBtycvjF4S5ZT-fFAp6T3G7bdWXmOMCgC3glPQiI
 
 GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 
@@ -6,7 +7,7 @@ GET {{WhatToEat.API_HostAddress}}/api/whatToEat
 
 
 GET {{WhatToEat.API_HostAddress}}/api/whatToEat/1015
-
+Authorization: Bearer {{token}}
 ###
 
 
@@ -57,7 +58,7 @@ DELETE {{WhatToEat.API_HostAddress}}/api/whatToEat/1019/Answer
 
 ###
 
-POST {{WhatToEat.API_HostAddress}}/Register
+POST {{WhatToEat.API_HostAddress}}/api/identity/Register
 Content-Type: application/json
 
 {
@@ -67,10 +68,10 @@ Content-Type: application/json
 
 ###
 
-POST {{WhatToEat.API_HostAddress}}/Login
+POST {{WhatToEat.API_HostAddress}}/api/identity/Login
 Content-Type: application/json
 
 {
   "email": "miCorreo@hotmail.com",
-  "password": "MiContrasenioa1$"
+  "password": "MiContrasenia1$"
 }

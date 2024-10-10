@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 using WhatToEat.Application.Questions;
@@ -13,9 +14,11 @@ namespace WhatToEat.API.Controllers;
 
 [ApiController]
 [Route("api/whatToEat")]
+[Authorize]
 public class WhatToEatController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<QuestionDto>>> GetAllQuestions()
     {
         var questions = await mediator.Send(new GetAllQuestionsQuery());

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
 using WhatToEat.Application.Answers.Commands.CreateAnswer;
@@ -14,6 +15,7 @@ namespace WhatToEat.API.Controllers;
 
 [ApiController]
 [Route("api/whatToEat/{questionId}/Answer")]
+[Authorize]
 public class AnswersController(IMediator mediator) : ControllerBase
 {
     [HttpDelete]
