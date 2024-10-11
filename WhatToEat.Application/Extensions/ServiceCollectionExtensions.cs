@@ -2,6 +2,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using WhatToEat.Application.Questions;
+using WhatToEat.Application.Users;
 
 namespace WhatToEat.Application.Extensions;
 
@@ -16,5 +17,9 @@ public static class ServiceCollectionExtensions
 
         services.AddValidatorsFromAssembly(applicationAssembly)
             .AddFluentValidationAutoValidation();
+
+        services.AddScoped<IUserContext, UserContext>();
+
+        services.AddHttpContextAccessor();
     }
 }
